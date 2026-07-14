@@ -348,6 +348,7 @@
   .lg-btn{width:100%;justify-content:center;margin-top:6px;padding:12px;font-size:15px}
   .login-note{margin-top:16px;font-size:11.5px;color:var(--faint);text-align:center;line-height:1.5;background:var(--bg2);border-radius:10px;padding:10px 12px}
 </style>
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojNjM2NkYxO3N0b3Atb3BhY2l0eToxIiAvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzhCNUNGNjtzdG9wLW9wYWNpdHk6MSIgLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgZmlsbD0iIzYzNjZGMSIgb3BhY2l0eT0iMC4wNSIvPjxnIGZpbGw9InVybCgjZ3JhZCkiPjxyZWN0IHg9IjYwIiB5PSIxMDgiIHdpZHRoPSI3MiIgaGVpZ2h0PSI0NSIgcng9IjUiIG9wYWNpdHk9IjAuNSIvPjxyZWN0IHg9IjU1IiB5PSI3OCIgd2lkdGg9IjcyIiBoZWlnaHQ9IjQ1IiByeD0iNSIgb3BhY2l0eT0iMC43NSIvPjxyZWN0IHg9IjUwIiB5PSI0OCIgd2lkdGg9IjcyIiBoZWlnaHQ9IjQ1IiByeD0iNSIgb3BhY2l0eT0iMSIvPjwvZz48Y2lyY2xlIGN4PSIxNDAiIGN5PSI1MCIgcj0iNSIgZmlsbD0iIzYzNjZGMSIgb3BhY2l0eT0iMC43Ii8+PC9zdmc+" type="image/svg+xml">
 </head>
 <body>
 <div class="login" id="login">
@@ -1251,6 +1252,11 @@ try{document.addEventListener('click',function(){var d=document.getElementById('
 function masuk(){var l=document.getElementById('login');if(l)l.style.display='none';window.scrollTo(0,0);}
 try{_mq&&_mq.addEventListener('change',function(){if(state.theme==='auto')applyTheme();});}catch(e){}
 applyTheme();
+/* localStorage persist */
+function saveState(){try{localStorage.setItem('projOS',JSON.stringify({events:state.events,projects:state.projects,years:state.years,ta:state.ta}));}catch(e){}}
+function loadState(){try{var d=JSON.parse(localStorage.getItem('projOS')||'null');if(d){state.events=d.events||state.events;state.projects=d.projects||state.projects;state.years=d.years||state.years;state.ta=d.ta||state.ta;}}catch(e){}}
+loadState();
+setInterval(saveState,2000);
 render();
 
 </script>
